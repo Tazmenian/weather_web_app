@@ -93,64 +93,24 @@
             </div>
 
             <div class="insights">
-                <!------------------- Start of SALES----------------->
-                <div class="sales">
-                    <span class="material-icons-outlined">analytics</span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Top Sales</h3>
-                            <h1>$25,024</h1>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx='38' cy='38' r='36'></circle>
-                            </svg>
-                            <div class="number">
-                                <p>81%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <small class="text-muted">Last 24 Hours</small>
+                
+                <div id="weather-container">
+                    <h2>Weather App</h2>
+                    <input type="text" id="city" placeholder="Enter city">
+                    <button onclick="getWeather()">Search</button>
+
+                    <img id="weather-icon" src="" alt="Weather Icon">
+                    <div id="temp-div"></div>
+                    <div id="weather-info"></div>
+                    <div id="hourly-forecast"></div>
+
+
                 </div>
                 <!------------------- End of SALES----------------->
                 <div class="income">
-                    <span class="material-icons-outlined">paid</span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Total Income</h3>
-                            <h1>$15,150</h1>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx='38' cy='38' r='36'></circle>
-                            </svg>
-                            <div class="number">
-                                <p>62%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <small class="text-muted">Last 24 Hours</small>
+
                 </div>
                 <!------------------- End of EXPENSES----------------->
-                <div class="expenses">
-                    <span class="material-icons-outlined">stacked_line_chart</span>
-                    <div class="middle">
-                        <div class="left">
-                            <h3>Total Expenses</h3>
-                            <h1>$33,753</h1>
-                        </div>
-                        <div class="progress">
-                            <svg>
-                                <circle cx='38' cy='38' r='36'></circle>
-                            </svg>
-                            <div class="number">
-                                <p>55%</p>
-                            </div>
-                        </div>
-                    </div>
-                    <small class="text-muted">Last 24 Hours</small>
-                </div>
-                <!------------------- End of INCOME----------------->
             </div>
             <!------------------- End of INSIGHTS----------------->
 
