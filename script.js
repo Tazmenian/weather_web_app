@@ -34,7 +34,7 @@ themeToggler.addEventListener('click', () => {
 
 
 
-// =====================   Table Content  ========================= //
+// =====================   Table Content  ====================== //
 // Assuming Orders is an array containing your order data
 
 const Orders = [
