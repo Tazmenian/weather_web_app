@@ -177,7 +177,7 @@ aside .close {
 /*==================== SIDEBAR ====================*/
 
 aside .sidebar {
-  background: white;
+  background: var(--color-white);
   display: flex;
   flex-direction: column;
   height: 86vh;
