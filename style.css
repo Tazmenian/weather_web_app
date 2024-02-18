@@ -280,87 +280,83 @@ main .insights > div:hover {
 }
 
 /* =================== Weather APP  ================*/
-#weather-container {
-  background: var(--color-white);
-  max-width: 400px;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 8px 32px var(--box-shadow);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--color-dark);
+.card {
+  width: 90%;
+  max-width: 470px;
+  background: linear-gradient(135deg, #00feba, #5b548a);
+  color: #fff;
+  margin: 100px auto 0;
+  border-radius: 20px;
+  padding: 40px 35px;
   text-align: center;
-  box-shadow: var(--box-shadow);
-  transition: all 300ms ease;
 }
-#weather-container:hover {
-  box-shadow: none;
-}
-#weather-container input {
-  width: calc(100%-16px);
-  padding: 8px;
-  box-sizing: border-box;
-  border-radius: var(--border-radius-2);
-  border: 1pc solid var(--color-white);
-  margin-top: 20px;
-}
-#weather-container button {
-  background: var(--color-dark);
-  color: var(--color-white);
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 20px;
-  width: 100px;
-  font-size: 15px;
-  transition: all 300ms ease;
-}
-#weather-container button:hover {
-  background: var(--color-light);
-  color: var(--color-dark);
-}
-
-#temp-div p {
-  font-size: 60px;
-  margin-top: -30px;
-}
-#weather-info {
-  font-size: 20px;
-}
-#weather-icon {
-  width: 200px;
-  height: 200px;
-  margin:  0 auto 10px;
-  margin-bottom: 0;
-  display: none;
-}
-
-#hourly-forecast {
-  margin-top: 50px;
-  overflow-x: auto;
-  white-space: nowrap;
+.search {
+  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
-.hourly-item {
-  flex: 0 0 auto;
-  width: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 10px;
-  color: var(--color-white);
+.search input {
+  border: 0;
+  outline: 0;
+  background: #ebfffc;
+  color: #555;
+  padding: 10px 25px;
+  height: 60px;
+  border-radius: 30px;
+  flex: 1;
+  margin-right: 16px;
+  font-size: 18px;
 }
-.hourly-item img {
-  width: 30px;
-  height: 30px;
-  margin-bottom: 5px;
+.search button{
+  border: 0;
+  outline: 0;
+  background: #ebfffc;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.search button img {
+  width: 16px;
+}
+.weather-icon {
+  width: 170px;
+  margin-top: 30px;
+}
+.weather h1{
+  font-size: 80px;
+  font-weight: 500;
+}
+.weather h2{
+  font-size: 45px;
+  font-weight: 400;
+  margin-top: -10px;
+}
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-top: 50px;
+}
+.col {
+  display: flex;
+  align-items: left;
+  text-align: left;
+}
+.col img {
+  width: 40px;
+  margin-right: 10px;
+}
+.humidity, .wind {
+  font-size: 28px;
+  margin-top: -6px;
 }
 
-#hourly-heading {
-  color: var(--color-white);
-  margin-top: 10px;
+.weather{
+  display: none;
 }
 
 /* =================== RIGHT ================*/
