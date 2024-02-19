@@ -91,33 +91,53 @@
                     </div>   
                 </div>
             </div>
+            <div class="insights">
                 <div class="card">
                     <div class="search">
                         <input type="text" placeholder="enter city name" spellcheck="false">
                         <button><span class="material-icons-outlined">search</span></button>
                     </div>
                     <div class="weather">
-                        <img class="weather-icon" src="images/rain.png" alt="">
-                        <h1 class="temp">22°C</h1>
-                        <h1 class="city">New York</h1>
+                        <div class="weather-update">
+                            <img class="weather-icon" src="images/rain.png" alt="">
+                            <h1 class="temp"><span class="material-icons-outlined">more_horiz</span></h1>
+                            <h1 class="city"><span class="material-icons-outlined">more_horiz</span>Loading<span class="material-icons-outlined">more_horiz</span></h1>
+                        </div>
                         <div class="details">
                             <div class="col">
                                 <img src="images/humidity.png" alt="">
                                 <div>
-                                    <p class="humidity">50%</p>
+                                    <p class="humidity"><span class="material-icons-outlined">more_horiz</span></p>
                                     <p>Humidity</p>
                                 </div>
                             </div>
                             <div class="col">
                                 <img src="images/wind.png" alt="">
                                 <div>
-                                    <p class="wind">15 km/h</p>
+                                    <p class="wind"><span class="material-icons-outlined">more_horiz</span></p>
                                     <p>Wind Speed</p>
                                 </div>
                             </div>
+                            <div class="col">
+                                <img src="images/pressure.png" alt="">
+                                <div>
+                                    <p class="pressure"><span class="material-icons-outlined">more_horiz</span></p>
+                                    <p>Pressure</p>
+                                </div>
+                            </div>
+                            <button class="reset-chart-button">Reset Data</button>
                         </div>
                     </div>
                 </div>
+                <div class="weekly-graph">
+
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            
                 <!------------------- End of SALES----------------->
 
                 <!------------------- End of EXPENSES----------------->
@@ -128,6 +148,8 @@
 
         
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
     <script type="module" src="script.js"></script>
     
 </body>
