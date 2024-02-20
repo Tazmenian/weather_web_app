@@ -51,6 +51,22 @@ async function checkWeather(city) {
     document.querySelector(".pressure").innerHTML = data.list[0].main.pressure + " Pa";
     document.querySelector(".temp").innerHTML = Math.round(data.list[0].main.temp) + " °C";
 
+    if(data.list[0].weather[0].main == "Clouds"){
+        weatherIcon.src = "images/clouds.png";
+    }
+    else if (data.list[0].weather[0].main == "Clear"){
+        weatherIcon.src = "images/clear.png";
+    }
+    else if (data.list[0].weather[0].main == "Rain"){
+        weatherIcon.src = "images/rain.png";
+    }
+    else if (data.list[0].weather[0].main == "Drizzle"){
+        weatherIcon.src = "images/drizzle.png";
+    }
+    else if (data.list[0].weather[0].main == "Mist"){
+        weatherIcon.src = "images/mist.png";
+    }
+
     createChartWithTemp(data);
 }
 
@@ -126,7 +142,9 @@ function createChartWithTemp(data) {
                 },
                 datalabels: {
                     color: 'white', // Font color for data labels
-                    display: true // Show data labels
+                    anchor: 'end', // Position of the data labels
+                    align: 'top', // Alignment of the data labels
+                    offset: 4 // Padding between the data labels and the bar
                 }
             },
             layout: {
@@ -135,8 +153,8 @@ function createChartWithTemp(data) {
                     bottom: 20
                 }
             },
-            aspectRatio: 2,
-            height: 200
+            aspectRatio: 2.5,
+            height: 150
         }
     });
     
