@@ -8,8 +8,9 @@
     --color-warning: rgb(207, 204, 65);
     --color-white: #ffffff;
     --color-info-dark: #8c91bd;
+    --color-info: #bdfafc;
     --color-info-light: #d1d4ee;
-    --color-dark: #5e638d;
+    --color-dark: #5e898d;
     --color-light: #d5d7e0;
     --color-primary-variant: #1a2edb;
     --color-dark-variant: #74757c;
@@ -46,7 +47,7 @@ body{
 }
 
 .container {
-    background-color: var(--color-white);
+    background-color: var(--color-info);
     border-radius: 30px;
     box-shadow: 0 5px 15px var(--box-shadow);
     position: relative;
@@ -83,7 +84,7 @@ body{
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    margin-top: 10px;
+    margin-top: 5px;
     cursor: pointer;
 }
 
@@ -93,7 +94,7 @@ body{
 }
 
 .container form {
-    background-color: var(--color-white);
+    background-color: var(--color-info);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -103,7 +104,7 @@ body{
 }
 
 .container input {
-    background-color: var(--color-light);
+    background-color: var(--color-white);
     border: none;
     margin: 8px 0;
     padding: 10px 15px;
@@ -161,13 +162,14 @@ body{
 
 .social-icons a i {
     border: 1px solid var(--color-dark);
-    border-radius: 20%;
+    border-radius: 50%;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     margin: 0 3px;
     width: 40px;
     height: 40px;
+    font-size: 20px;
 }
 
 .toggle-container {
@@ -179,32 +181,32 @@ body{
     overflow: hidden;
     z-index: 1000;
     transition: all 300ms ease-in-out;
-    border-radius: 150px 0 0 100px;
+
 }
 
 .container.active .toggle-container {
     transform: translateX(-100%);
-    border-radius: 0 150px 100px 0;
 }
 
 .toggle {
-    background-color: var(--color-primary);
     height: 100%;
-    background: var(--color-gradient);
     position: relative;
     left: -100%;
     height: 100%;
     width: 200%;
     transform: translateX(0);
     transition: all 300ms ease;
+
 }
 .container.active .toggle{
     transform: translateX(50%);
 }
+.toggle .toggle-panel h1, p {
+    color: yellow;
+}
 
 .toggle.active {
     transform: translateX(0);
-    border-radius: 0 150px 100px 0;
 }
 
 .toggle-panel {
@@ -224,6 +226,9 @@ body{
 
 .toggle-left {
     transform: translateX(-200%);
+    background-image: url(images/ocean-coast-bali.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container.active .toggle-left {
@@ -233,8 +238,25 @@ body{
 .toggle-right{
     right: 0;
     transform: translateX(0);
+    background-image: url(images/sunshine.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container.active .toggle-right {
     transform: translateX(200%);
+}
+
+form .fa-circle-user{
+    font-size: 130px;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+.toggle-panel button{
+    opacity: 0.8;
+}
+
+.toggle-panel button:hover{
+    opacity: 1;
 }
