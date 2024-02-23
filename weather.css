@@ -65,7 +65,7 @@ img {
     display: block;
     flex-direction: column;
     justify-content: space-between;
-    background: var(--color-success);
+    background: var(--color-background);
 }
 
 .search {
@@ -140,10 +140,69 @@ img {
     width: 100%;
     height: 1px;
     margin: 20px 0;
-    background: var(--color-background);
+    background: var(--color-dark);
 }
 .update_weather {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.condition-rain {
+    font-size: 12px;
+    text-transform: capitalize;
+}
+.condition-rain div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.condition-rain div i {
+    width: 20px;
+}
+.location {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 10px;
+    margin-top: 10px;
+    height: 90%;
+}
+.main {
+    width: 100%;
+    min-width: 400px;
+    padding: 20px 40px;
+    position: relative;
+    padding-bottom: 90px;
+    background-color: var(--color-white);
+}
+.main nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+nav .option {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.option button {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-dark);
+    text-transform: capitalize;
+}
+.option button.active {
+    color: var(--color-primary);
+}
+nav .units button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--color-darkt);
+    background: var(--color-light);
+    border: none;
 }
