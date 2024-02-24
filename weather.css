@@ -205,3 +205,76 @@ nav .units button {
     background: var(--color-light);
     border: none;
 }
+.units button.active {
+    color: var(--color-white);
+    background: var(--color-dark);
+}
+.main .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 50px;
+}
+.cards .card {
+    width: 100px;
+    height: 130px;
+    border-radius: var(--border-radius-2);
+    color: var(--color-dark);
+    background: var(--color-light);
+    text-align: center;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card h2 {
+    font-size: 15px;
+    font-weight: 600;
+}
+.card .card-icon {
+    width: 50%;
+    margin: 0 auto;
+}
+.card .day-temp {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 50px;
+}
+.highlights .heading {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.highlights .card2 {
+    width: 250px;
+    height: 150px;
+    border-radius: 20px;
+    color: var(--color-dark);
+    background: var(--color-light);
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+}
+.card2 .card-heading {
+    color: var(--color-white);
+}
+.card2 .content {
+    margin-top: 20px;
+}
+.card2 .content p:first-child{
+    text-align: center;
+    font-size: 30px;
+}
+.card2 .content p:last-child {
+    font-size: 12px;
+    margin-top: 20px;
+    text-align: left;
+}
