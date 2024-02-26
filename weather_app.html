@@ -16,6 +16,7 @@
                     <button>
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
+                    <!----added ul li thru javascript-->
                 </form>
                 <div class="update_weather">
                     <div class="weather-icon">
@@ -57,22 +58,11 @@
                     <button class="week active">Week</button>
                 </ul>
                 <ul class="options units">
-                    <button class="celsius active">°C</button>
+                    <button class="celsius">°C</button>
                     <button class="fahrenheit">°F</button>
                 </ul>
             </nav>
-            <div class="cards" id="weather-cards">
-                <div class="card">
-                    <h2 class="day-name">Monday</h2>
-                    <div class="card-icon">
-                        <img src="images/drizzle.png" alt="">
-                    </div>
-                    <div class="day-temp">
-                        <h2 class="temp">32</h2>
-                        <span class="temp-uni">°C</span>
-                    </div>
-                </div>
-            </div>
+            <div class="cards" id="weather-cards"></div>
             <div class="highlights">
                 <h2 class="heading">today's highlights</h2>
                 <div class="cards">
@@ -124,5 +114,7 @@
         </div>
     </div>
     <script type="module" src="weather.js"></script>
+    
+
 </body>
 </html>

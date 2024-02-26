@@ -16,6 +16,13 @@ const airQuality = document.querySelector(".air-quality");
 const airQualityStatus = document.querySelector(".air-quality-status");
 const visibilityStatus = document.querySelector(".visibility-status");
 const weatherCards = document.querySelector("#weather-cards");
+const hourlyBtn = document.querySelector(".hourly");
+const weekBtn = document.querySelector(".week");
+const tempUnit = document.querySelectorAll(".temp-unit");
+const celsiusBtn = document.querySelector(".celsius");
+const fahrenheitBtn = document.querySelector(".fahrenheit");
+const searchForm = document.querySelector("#search");
+const search = document.querySelector("#query");
 
 
 let currentCity = "";
@@ -65,19 +72,19 @@ updateDate();
 setInterval(updateDate, 1000);
 
 //  Function to get the Public IP
-function getPublicIp() {
-    fetch("https://geolocation-db.com/json/", {
-        method: "GET",
-    })
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-        currentCity = data.currentCity;
-        getWeatherData(data.city, currentUnit, hourlyorWeek);
-    })
-}
+//function getPublicIp() {
+//    fetch("https://geolocation-db.com/json/", {
+//        method: "GET",
+ //   })
+//    .then((response) => response.json())
+ //   .then((data) => {
+ //       console.log(data);
+ //       currentCity = data.city;
+ //       //getWeatherData(data.city, currentUnit, hourlyorWeek);
+ //   })
+//}
 
-getPublicIp();
+//getPublicIp();
 
 
 //function to get weather data
@@ -116,17 +123,25 @@ function getWeatherData(city, unit, hourlyorWeek) {
         sunRise.innerText = convertTimeTo12HourFormat(today.sunrise);
         sunSet.innerText = convertTimeTo12HourFormat(today.sunset);
         mainIcon.src = getIcon(today.icon);
+        changeBackground(today.icon);
 
         if (hourlyorWeek === "hourly") {
-            updateForcast(data.days[0].hours,unit,"daya");
-        }else {
-            updateForcast(data.days, unit, "week");
+            if (data.days && data.days.length > 0 && data.days[0].hours) {
+                updateForecast(data.days[0].hours, unit, "day");
+            } else {
+                console.error("Hourly forecast data not available in the expected format");
+            }
+        } else {
+            updateForecast(data.days, unit, "week")
         }
-    });
+        })
+        .catch((err) => {
+            alert("City Invalid");
+        });
 }
 
 //function for converting celsius to fahrenheit
-function celciusToFahrenheit(temp) {
+function celsiusToFahrenheit(temp) {
     return ((temp * 9) / 5 + 32).toFixed(1);
 }
 
@@ -196,7 +211,7 @@ function convertTimeTo12HourFormat(time) {
     let hour = time.split(":")[0];
     let minute = time.split(":")[1];
     let ampm = hour >= 12 ? "PM" : "AM";
-    hour = hour & 12;
+    hour = hour % 12;
     hour = hour ? hour : 12;
     hour = hour < 10 ? "0" + hour : hour;
     minute = minute < 10 ? "0" + minute : minute;
@@ -237,44 +252,223 @@ function getDayName(date) {
 function getHour(time) {
     let hour = time.split(":")[0];
     let min = time.split(":")[1];
-    if (hour < 12) {
-        hour = hour - 12;
+    if (hour > 12) {
+        hour = hour % 12;
         return `${hour}:${min} PM`;
     } else {
         return `${hour}:${min} AM`;
     }
 }
 
-function updateForcast(data,unit,type) {
+function updateForecast(data, unit, type) {
+
     weatherCards.innerHTML = "";
 
-    let day = 0;
-    let numCards = 0;
+    let numCards = (type === "day") ? 24 : 7; // 24 cards for hourly, 7 for weekly
 
-    //24cards if hourly weather and 7 for weakly
-    if (type === "day") {
-        numCards = 24;
-    }else {
-        numCards = 7;
-    }
-        for (let i = 0; i < numCards; i++) {
-            let card = document.createElement("div");
-            card.classList.add("card");
-            //hour if hourly ime and day name if weekly
-            let dayName = getHour(data[day].dateTime); //tod
-            if (type === "week") {
-                dayName = getDayName(data[day].dateTime);
-            }
+    for (let i = 0; i < numCards && i < data.length; i++) {
+        let card = document.createElement("div");
+        card.classList.add("card");
+        
+        let dayName = (type === "week") ? getDayName(data[i].datetime) : getHour(data[i].datetime);
+        let dayTemp = (unit === "f") ? celsiusToFahrenheit(data[i].temp) : data[i].temp;
+        let iconSrc = getIcon(data[i].icon);
+        let tempUnit = (unit === "f") ? "°F" : "°C";
 
-            let dayTemp = data[day].temp;
-            if (unit === "f") {
-                dayTemp = celciusToFahrenheit(data[day].temp);
-            }
-            let iconCondition = data[day].icon;
-            let iconSrc = getIcon(iconCondition);
-            let tempUnit = "°C";
-            if (unit === "f") {
-                tempUnit = "°F";
-            }
-        }
+        card.innerHTML = `
+            <h2 class="day-name">${dayName}</h2>
+            <div class="card-icon">
+                <img src="${iconSrc}" alt="">
+            </div>
+            <div class="day-temp">
+                <h2 class="temp">${dayTemp}</h2>
+                <span class="temp-uni">${tempUnit}</span>
+            </div>   
+        `;
+        weatherCards.appendChild(card);
+    } 
 }
+
+function changeBackground(condition){
+    let bg = "";
+    const body = document.body; // Define body explicitly
+    if (condition === "Partly-cloudy-day") {
+        bg = "var(--color-success)";
+    } else if (condition === "Partly-cloudy-night") {
+        bg = "var(--color-dark)";
+    } else if (condition === "rain") {
+        bg = "var(--color-primary)";
+    } else if (condition === "clear-day") {
+        bg = "var(--color-primary)";
+    } else if (condition === "clear-night") {
+        bg = "var(--color-primary)";
+    } else  {
+        bg = "var(--color-dark)";
+    }
+    body.style.background = `url(${bg})`;
+}
+
+fahrenheitBtn.addEventListener('click', () => {
+    changeUnit("f");
+});
+
+celsiusBtn.addEventListener('click', () => {
+    changeUnit("c");
+});
+
+function changeUnit(unit) {
+    if (currentUnit !== unit) {
+        currentUnit = unit;
+        tempUnit.forEach((elem) => {
+            elem.innerText = `°${unit.toUpperCase()}`;
+        });
+        if(unit === "c") {
+            celsiusBtn.classList.add("active")
+            fahrenheitBtn.classList.remove("active")
+        } else{
+            celsiusBtn.classList.remove("active")
+            fahrenheitBtn.classList.add("active")
+        }
+
+        // function call
+        getWeatherData(currentCity, currentUnit, hourlyorWeek);
+    }
+}
+
+hourlyBtn.addEventListener('click', () => {
+    changeTimeSpan("hourly");
+});
+weekBtn.addEventListener('click', () => {
+    changeTimeSpan("week");
+});
+ function changeTimeSpan(unit) {
+    if (hourlyorWeek != unit) {
+        hourlyorWeek = unit;
+        if (unit === "hourly") {
+            hourlyBtn.classList.add("active");
+            weekBtn.classList.remove("active");
+        } else {
+            hourlyBtn.classList.remove("active");
+            weekBtn.classList.add("active");
+        }
+        // change took place
+        getWeatherData(currentCity, currentUnit, hourlyorWeek);
+    }
+ }
+
+ searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let location = search.ariaValueMax;
+    if (location) {
+        currentCity = location;
+        getWeatherData(currentCity, currentUnit, hourlyorWeek);
+    }
+ })
+
+ //array for city suggestion
+
+ const cities = [
+    "Manila",
+    "Calamba",
+    "Cebu",
+    "Quezon",
+    "Rizal",
+    "Antipolo",
+    "Cavite",
+    "Tagaytay",
+];
+
+async function fetchPlaceSuggestions(query) {
+    const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${query}`;
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch suggestions. Status: ${response.status}`);
+        }
+        const data = await response.json();
+        const suggestions = data.map(place => place.display_name.split(',')[0]);
+        return suggestions;
+    } catch (error) {
+        console.error('Error fetching place suggestions:', error);
+        return [];
+    }
+}
+
+function initializeSearch() {
+    const searchInput = document.getElementById('query');
+    const suggestionsContainer = document.createElement("ul");
+    suggestionsContainer.setAttribute("id", "suggestions");
+    searchInput.parentNode.appendChild(suggestionsContainer);
+
+    searchInput.addEventListener('input', async (e) => {
+        const query = e.target.value.trim();
+        if (query.length >= 2) {
+            try {
+                const suggestions = await fetchPlaceSuggestions(query);
+                displaySuggestions(suggestions);
+            } catch (error) {
+                console.error('Error fetching or displaying suggestions:', error);
+                clearSuggestions();
+            }
+        } else {
+            displaySuggestionsFromCities(query);
+        }
+    });
+
+    function displaySuggestions(suggestions) {
+        suggestionsContainer.innerHTML = '';
+        suggestions.forEach(suggestion => {
+            const suggestionItem = document.createElement("li");
+            suggestionItem.textContent = suggestion;
+            suggestionItem.addEventListener('click', () => {
+                searchInput.value = suggestion;
+                clearSuggestions();
+            });
+            suggestionsContainer.appendChild(suggestionItem);
+        });
+    }
+
+    function clearSuggestions() {
+        suggestionsContainer.innerHTML = '';
+    }
+
+    function displaySuggestionsFromCities(query) {
+        clearSuggestions();
+        if (!query) return;
+        
+        const matchedCities = cities.filter(city =>
+            city.toUpperCase().includes(query.toUpperCase())
+        );
+
+        matchedCities.forEach(city => {
+            const suggestionItem = document.createElement("li");
+            suggestionItem.innerHTML = `<strong>${city.substr(0, query.length)}</strong>${city.substr(query.length)}`;
+            suggestionItem.addEventListener('click', () => {
+                searchInput.value = city;
+                clearSuggestions();
+            });
+            suggestionsContainer.appendChild(suggestionItem);
+        });
+    }
+}
+
+initializeSearch();
+
+
+// Function to clear suggestions
+function clearSuggestions() {
+    const suggestions = document.getElementById("suggestions");
+    if (suggestions) {
+        suggestions.parentNode.removeChild(suggestions);
+    }
+}
+
+searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let location = search.value; // Use search.value instead of search.ariaValueMax
+    if (location) {
+        currentCity = location;
+        getWeatherData(currentCity, currentUnit, hourlyorWeek);
+    }
+});
+
