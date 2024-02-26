@@ -16,6 +16,7 @@
     --color-dark-variant: #74757c;
     --color-background: #e5e5eb;
     --color-gradient: linear-gradient(135deg, #23d9f1, #2b4958);
+    --color-gradient-dark: linear-gradient(135deg, #1bbd41, #2b4958);
   
     --card-border-radius: 1rem;
     --border-radius-1: 0.4rem;
@@ -38,7 +39,7 @@
 }
 
 body{
-    background: var(--color-light);
+    background: var(--color-white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,7 +50,7 @@ body{
 .container {
     background-color: var(--color-info);
     border-radius: 30px;
-    box-shadow: 0 5px 15px var(--box-shadow);
+    box-shadow:var(--box-shadow);
     position: relative;
     overflow: hidden;
     width: 768px;
@@ -72,7 +73,9 @@ body{
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;
+    transition: all 300ms ease;
 }
+
 
 .container button {
     background-color: var(--color-primary);
@@ -94,7 +97,9 @@ body{
 }
 
 .container form {
-    background-color: var(--color-info);
+    background-image: url(images/ocean-coast-bali.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -161,7 +166,7 @@ body{
 }
 
 .social-icons a i {
-    border: 1px solid var(--color-dark);
+    background: var(--color-white);
     border-radius: 50%;
     display: inline-flex;
     justify-content: center;
@@ -170,6 +175,12 @@ body{
     width: 40px;
     height: 40px;
     font-size: 20px;
+    transition: all 300ms ease;
+}
+
+.social-icons a i:hover {
+    color: var(--color-white);
+    background: var(--color-dark);
 }
 
 .toggle-container {
@@ -226,9 +237,7 @@ body{
 
 .toggle-left {
     transform: translateX(-200%);
-    background-image: url(images/ocean-coast-bali.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: var(--color-gradient);
 }
 
 .container.active .toggle-left {
@@ -238,9 +247,7 @@ body{
 .toggle-right{
     right: 0;
     transform: translateX(0);
-    background-image: url(images/sunshine.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: var(--color-gradient-dark);
 }
 
 .container.active .toggle-right {
