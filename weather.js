@@ -29,6 +29,7 @@ let currentCity = "";
 let currentUnit = "c";
 let hourlyorWeek = "Week";
 
+
 // Time Update
 
 function getDateTime() {
@@ -87,6 +88,14 @@ setInterval(updateDate, 1000);
 //getPublicIp();
 
 
+ // Initialize the map
+ var map = L.map('map').setView([51.505, -0.09], 10); // Centered at (51.505, -0.09) with zoom level 13
+
+ // Add a base map tile layer (you can choose different tile providers)
+ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+ }).addTo(map);
+
 //function to get weather data
 
 function getWeatherData(city, unit, hourlyorWeek) {
@@ -97,10 +106,14 @@ function getWeatherData(city, unit, hourlyorWeek) {
             method: "GET",
         }
     )
-    
     .then((response) => response.json())
     .then((data) => {
+        console.log("Weather API Response:", data);
         let today = data.currentConditions;
+
+        // Update map location based on city coordinates
+        map.setView([data.latitude, data.longitude], 13);
+
         if (temp) {
             if (unit === "c") {
                 temp.innerText = today.temp;
@@ -108,6 +121,7 @@ function getWeatherData(city, unit, hourlyorWeek) {
                 temp.innerText = celsiusToFahrenheit(today.temp);
             }
         }
+
         currentLocation.innerText = data.resolvedAddress;
         condition.innerText = today.conditions;
         rain.innerText = "Perc -" + today.precip + "%";
@@ -132,13 +146,24 @@ function getWeatherData(city, unit, hourlyorWeek) {
                 console.error("Hourly forecast data not available in the expected format");
             }
         } else {
-            updateForecast(data.days, unit, "week")
+            updateForecast(data.days, unit, "week");
         }
-        })
-        .catch((err) => {
-            alert("City Invalid");
-        });
+
+        // Add a marker to the map at the weather location
+        const marker = L.marker([data.latitude, data.longitude]).addTo(map)
+            .bindPopup(`<b>${city}</b><br>Temperature: ${today.temp}°C<br>Weather: ${today.conditions}`)
+            .openPopup();
+
+        // Pan the map to the weather location
+        map.panTo([data.latitude, data.longitude]);
+    })
+    .catch((err) => {
+        alert("City Invalid");
+    });
 }
+
+
+
 
 //function for converting celsius to fahrenheit
 function celsiusToFahrenheit(temp) {
@@ -471,4 +496,6 @@ searchForm.addEventListener('submit', (e) => {
         getWeatherData(currentCity, currentUnit, hourlyorWeek);
     }
 });
+
+
 
