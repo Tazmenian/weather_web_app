@@ -112,6 +112,9 @@
             const user = userCredential.user;
             console.log(user);  
             alert("Sign in successful!");
+
+            // Redirect to weather_app.html
+        window.location.href = "weather_app.html";
         })
         .catch((error) => {
             const errorCode = error.code;

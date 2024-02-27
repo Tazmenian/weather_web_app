@@ -10,14 +10,34 @@
 <body>
     <div class="wrapper">
         <div class="sidebar">
-            <div>
-                <form action="" class="search" id="search">
-                    <input type="text" id="query" placeholder="Search...">
-                    <button>
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                    <!----added ul li thru javascript-->
-                </form>
+            
+
+<!------sidebar menu-------------->
+
+
+        </div>
+        <div class="main">
+            <nav>
+                <ul class="option">
+                    <button class="hourly">Today</button>
+                    <button class="week active">Week</button>
+                </ul>
+                <ul>
+                    <form action="" class="search" id="search">
+                        <input type="text" id="query" placeholder="Enter City Name...">
+                        <button>
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                        <!----added ul li thru javascript-->
+                    </form>
+                </ul>
+                <ul class="options units">
+                    <button class="celsius">°C</button>
+                    <button class="fahrenheit">°F</button>
+                </ul>
+            </nav>
+            <!-------------Weather Update-------------->
+            <div class="weather_map">
                 <div class="update_weather">
                     <div class="weather-icon">
                         <img src="images/clouds.png" alt="" id="icon">
@@ -30,38 +50,35 @@
                         <p class="date-time">Monday, 12:00</p>
                     </div>
                 </div>
-                <div class="divider"></div>
+                <div class="map">
+                    
+                </div>
+            </div>
+            <div>
                 <div class="condition-rain">
-                    <div class="condition">
-                        <i class="fas fa-cloud"></i>
-                        <div class="condition" id="condition">Condition</div>
-                    </div>
-                    <div class="rain">
-                        <i class="fas fa-tint"></i>
-                        <p id="rain">perc - 0%</p>
+                    <div>
+                        <div class="condition">
+                            <i class="fas fa-cloud"></i>
+                            <div class="condition" id="condition">Condition</div>
+                        </div>
+                        <div class="rain">
+                            <i class="fas fa-tint"></i>
+                            <p id="rain">perc - 0%</p>
+                        </div>
+                     </div>
+                    <div class="location">
+                        <div class="location-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="location-text">
+                            <p class="location">Location</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="location">
-                <div class="location-icon">
-                    <i class="fa-solid fa-location-dot"></i>
-                </div>
-                <div class="location-text">
-                    <p class="location">Location</p>
-                </div>
-            </div>
-        </div>
-        <div class="main">
-            <nav>
-                <ul class="option">
-                    <button class="hourly">Today</button>
-                    <button class="week active">Week</button>
-                </ul>
-                <ul class="options units">
-                    <button class="celsius">°C</button>
-                    <button class="fahrenheit">°F</button>
-                </ul>
-            </nav>
+            <div class="divider"></div>
+            <!-------------Weather Update-------------->
+
             <div class="cards" id="weather-cards"></div>
             <div class="highlights">
                 <h2 class="heading">today's highlights</h2>
