@@ -497,5 +497,69 @@ searchForm.addEventListener('submit', (e) => {
     }
 });
 
+//variable for Menu DOm manipulation
+const dashboardBtn = document.querySelector('.dashboard'),
+analyticsBtn = document.querySelector('.analytics'),
+navigationBtn = document.querySelector('.navigation');
 
+//variable for Content DOm manipulation
+const analyticsContent = document.querySelector('.analytics-container'),
+dashboardContent = document.querySelector('.dashboard-container'),
+navigationContent = document.querySelector('.navigation-container');
+
+//variable menu styling manipulation
+// Variable menu styling manipulation
+const dashboardMenu = document.querySelector('.menu ul li.dashboard a'),
+      analyticsMenu = document.querySelector('.menu ul li.analytics a'),
+      navigationMenu = document.querySelector('.menu ul li.navigation a');
+
+
+dashboardBtn.addEventListener('click', () => {
+    dashboardContent.style.display = "block";
+    analyticsContent.style.display = "none";
+    navigationContent.style.display = "none";
+
+    //manipulate menu li class
+    dashboardMenu.classList.add("active");
+    analyticsMenu.classList.remove("active");
+    navigationMenu.classList.remove("active");
+
+    //manipulate menu li class
+    dashboardBtn.classList.add("active");
+    analyticsBtn.classList.remove("active");
+    navigationBtn.classList.remove("active");
+
+});
+
+analyticsBtn.addEventListener('click', () => {
+    dashboardContent.style.display = "none";
+    analyticsContent.style.display = "block";
+    navigationContent.style.display = "none";
+
+    //manipulate menu li class
+    dashboardMenu.classList.remove("active");
+    analyticsMenu.classList.add("active");
+    navigationMenu.classList.remove("active");
+
+     //manipulate menu li class
+     dashboardBtn.classList.remove("active");
+     analyticsBtn.classList.add("active");
+     navigationBtn.classList.remove("active");
+});
+
+navigationBtn.addEventListener('click', () => {
+    dashboardContent.style.display = "none";
+    analyticsContent.style.display = "none";
+    navigationContent.style.display = "block";
+
+    //manipulate menu li class
+    dashboardMenu.classList.remove("active");
+    analyticsMenu.classList.remove("active");
+    navigationMenu.classList.add("active");
+
+     //manipulate menu li class
+     dashboardBtn.classList.remove("active");
+     analyticsBtn.classList.remove("active");
+     navigationBtn.classList.add("active");
+});
 
