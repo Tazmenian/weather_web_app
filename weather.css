@@ -414,6 +414,7 @@ img {
 }
 
 
+/*=========   START OF ANALYTICS SECTION ======*/
 .analytics-container {
     width: 100%;
     position: relative;
@@ -437,13 +438,55 @@ img {
     min-width: 400px;
     padding: 20px 40px;
     position: relative;
-    padding-bottom: 90px;
     background-color: var(--color-light);
     display: none;
 }
 
-canvas {
-    width: 100%;
-    height: 100%;
-    display: block;
+
+/* ---------- Graph Design Section --------*/
+
+
+.analytics-navigation ul{
+    display: flex;
+    align-items: baseline;
+    justify-content: start;
 }
+
+.analytics-navigation ul li {
+    list-style: none;
+    cursor: pointer;
+    border: 2px solid var(--color-dark);
+    padding: 2px 5px;
+}
+.analytics-navigation ul li.active{
+    background: var(--color-dark);
+    color: var(--color-white);
+}
+.analytics-navigation ul li:first-child {
+    border-radius: 5px 0 0 5px;
+}
+.analytics-navigation ul li:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+.graph-container {
+    width: 100%;
+    height: 350px;
+    background: var(--color-warning);
+    margin-bottom: 10PX;
+    display: inline-block;
+}
+
+.graph-container .active {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    height: 100%;
+    background: var(--color-info-light);
+    transition: all 300ms ease;
+}
+
+.graph-container .graph .days-graph {
+    background: var(--color-success);
+}
+
+

@@ -403,21 +403,21 @@ weekBtn.addEventListener('click', () => {
     "Tagaytay",
 ];
 
-async function fetchPlaceSuggestions(query) {
-    const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${query}`;
-    try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-            throw new Error(`Failed to fetch suggestions. Status: ${response.status}`);
-        }
-        const data = await response.json();
-        const suggestions = data.map(place => place.display_name.split(',')[0]);
-        return suggestions;
-    } catch (error) {
-        console.error('Error fetching place suggestions:', error);
-        return [];
-    }
-}
+// async function fetchPlaceSuggestions(query) {
+//     const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${query}`;
+//     try {
+//         const response = await fetch(apiUrl);
+//         if (!response.ok) {
+//             throw new Error(`Failed to fetch suggestions. Status: ${response.status}`);
+//         }
+//         const data = await response.json();
+//         const suggestions = data.map(place => place.display_name.split(',')[0]);
+//         return suggestions;
+//     } catch (error) {
+//         console.error('Error fetching place suggestions:', error);
+//         return [];
+//     }
+// }
 
 function initializeSearch() {
     const searchInput = document.getElementById('query');
@@ -565,4 +565,7 @@ navigationBtn.addEventListener('click', () => {
 
 
 
+
+
+// Grapch functionality
 
