@@ -233,8 +233,6 @@ function getWeatherData(city, unit, hourlyorWeek) {
         pressureProgress.style.background = `conic-gradient(${pressure} ${pressureStartValue * 3.6}deg, whitesmoke ${pressureStartValue * 3.6}deg)`;
         // Update progressEndValue dynamically inside the loop
 
-        console.log(today.pressure);
-        console.log(today.solarenergy);
     
     //}, speed);
     })
@@ -326,20 +324,24 @@ function convertTimeTo12HourFormat(time) {
 }
 
 function getIcon(condition) {
-    if (condition === "Partly-cloudy-day") {
+    // Convert the condition to lowercase for case-insensitive comparison
+    const lowerCaseCondition = condition.toLowerCase();
+
+    if (lowerCaseCondition === "partly-cloudy-day") {
         return "images/clouds.png";
-    } else if (condition === "Partly-cloudy-night") {
+    } else if (lowerCaseCondition === "partly-cloudy-night") {
         return "images/clouds.png";
-    } else if (condition === "rain") {
+    } else if (lowerCaseCondition === "rain") {
         return "images/rain.png";
-    } else if (condition === "clear-day") {
+    } else if (lowerCaseCondition === "clear-day") {
         return "images/clear.png";
-    } else if (condition === "clear-night") {
+    } else if (lowerCaseCondition === "clear-night") {
         return "images/clear.png";
-    } else  {
-        return "images/snow.png";
+    } else {
+        return "images/snow.png"; // Default image if condition doesn't match
     }
 }
+
 
 function getDayName(date) {
     let day = new Date(date);
@@ -366,7 +368,7 @@ function getHour(time) {
     }
 }
 
-function updateForecast(data, unit, type) {
+function updateForecast(data, unit, type, date) {
 
     weatherCards.innerHTML = "";
 

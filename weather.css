@@ -427,6 +427,7 @@ img {
     height: 450px; /* Make sure the map container fills its parent */
     overflow: hidden;
     background: transparent;
+    margin-top: 15px;
 }
 .map-container-weather iframe{
     border-radius: var(--border-radius-1);
@@ -560,9 +561,29 @@ img {
     margin: 0 auto;
     border-radius: var(--border-radius-1);
     opacity: 0.8;
+    display: flex;
+    flex-direction: column;
 }
-
-
+.image-condition{
+    width: 100%;
+    height: 150px;
+}
+.condition-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-white);
+}
+.condition-date {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
   
 
 
