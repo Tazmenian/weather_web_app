@@ -455,8 +455,12 @@ img {
 .analytics-navigation ul li {
     list-style: none;
     cursor: pointer;
-    border: 2px solid var(--color-dark);
+    border: 1px solid var(--color-dark);
     padding: 2px 5px;
+    transition: all 300ms ease;
+}
+.analytics-navigation ul li:hover {
+    background: var(--color-dark);
 }
 .analytics-navigation ul li.active{
     background: var(--color-dark);
@@ -473,20 +477,68 @@ img {
     width: 100%;
     height: 350px;
     background: var(--color-warning);
-    margin-bottom: 10PX;
+    margin-bottom: 10px;
     display: inline-block;
-}
-
-.graph-container .active {
-    display: grid;
+  }
+  
+  .graph {
+    display: none;
     grid-template-columns: 3fr 1fr;
     height: 100%;
     background: var(--color-info-light);
     transition: all 300ms ease;
+  }
+
+  .graph-container div:first-child {
+    display: grid;
+  }
+  
+  /* ---------- Circular progress ------------*/
+.circular-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-radius: var(--border-radius-1);
+    background: var(--color-white);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 15px;
+}
+.circular-progress {
+    position: relative;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    background: conic-gradient(#7d2ae8, 3.6deg, whitesmoke 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circular-progress::before{
+    content: "";
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    top: 25px;
+    left: 25px;
+}
+.progress-value {
+    position: relative;
+    font-size: 40px;
+    font-weight: 600;
+    color: #7d2ae8;
+}
+.progress-title {
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--color-dark);
+    margin: 0 auto;
 }
 
-.graph-container .graph .days-graph {
-    background: var(--color-success);
-}
+  
 
 

@@ -24,7 +24,6 @@ const fahrenheitBtn = document.querySelector(".fahrenheit");
 const searchForm = document.querySelector("#search");
 const search = document.querySelector("#query");
 
-
 let currentCity = "";
 let currentUnit = "c";
 let hourlyorWeek = "Week";
@@ -156,6 +155,39 @@ function getWeatherData(city, unit, hourlyorWeek) {
 
         // Pan the map to the weather location
         map.panTo([data.latitude, data.longitude]);
+
+        let circularProgress = document.querySelector('.circular-progress');
+        let progressValue = document.querySelector('.progress-value');
+
+        let progressStartValue = today.temp;
+        let speed = 100;
+
+        let progress = setInterval(() => {
+ //   progressStartValue++;
+
+    progressValue.textContent = `${progressStartValue}°C`;
+
+    // Calculate color based on progress
+    let color;
+    if (progressStartValue <= 18) {
+        color = 'blue';
+    } else if (progressStartValue <= 30) {
+        color = 'green';
+    } else if (progressStartValue <= 50) {
+        color = 'yellow';
+    } else {
+        color = 'red';
+    }
+
+    // Update circular progress gradient
+    circularProgress.style.background = `conic-gradient(${color} ${progressStartValue * 3.6}deg, whitesmoke ${progressStartValue * 3.6}deg)`;
+
+    // Update progressEndValue dynamically inside the loop
+
+    
+        clearInterval(progress);
+    
+    }, speed);
     })
     .catch((err) => {
         alert("City Invalid");
@@ -432,7 +464,7 @@ function initializeSearch() {
                 const suggestions = await fetchPlaceSuggestions(query);
                 displaySuggestions(suggestions);
             } catch (error) {
-                console.error('Error fetching or displaying suggestions:', error);
+                //console.error('Error fetching or displaying suggestions:', error);
                 clearSuggestions();
             }
         } else {
@@ -566,6 +598,124 @@ navigationBtn.addEventListener('click', () => {
 
 
 
+// GRAPH Dom manipulation
+const tempBtn = document.querySelector('.temp-btn'),
+  conditionBtn = document.querySelector('.condition-btn'),
+  humidityBtn = document.querySelector('.hum-btn'),
+  solarBtn = document.querySelector('.solar-btn'),
+  pressureBtn = document.querySelector('.pressure-btn');
 
-// Grapch functionality
+const tempGraph = document.querySelector('.temp-graph'),
+  conditionGraph = document.querySelector('.condition-graph'),
+  humidityGraph = document.querySelector('.humidity-graph'),
+  solarGraph = document.querySelector('.solarEnergy-graph'),
+  pressureGraph = document.querySelector('.pressure-graph');
+
+tempBtn.addEventListener('click', () => {
+    tempGraph.style.display = "grid";
+    conditionGraph.style.display = "none";
+    humidityGraph.style.display = "none";
+    solarGraph.style.display = "none";
+    pressureGraph.style.display = "none";
+
+    tempBtn.classList.add('active');
+    conditionBtn.classList.remove('active');
+    humidityBtn.classList.remove('active');
+    solarBtn.classList.remove('active');
+    pressureBtn.classList.remove('active');
+
+});
+
+conditionBtn.addEventListener('click', () => {
+    tempGraph.style.display = "none";
+    conditionGraph.style.display = "grid";
+    humidityGraph.style.display = "none";
+    solarGraph.style.display = "none";
+    pressureGraph.style.display = "none";
+
+    tempBtn.classList.remove('active');
+    conditionBtn.classList.add('active');
+    humidityBtn.classList.remove('active');
+    solarBtn.classList.remove('active');
+    pressureBtn.classList.remove('active');
+});
+
+humidityBtn.addEventListener('click', () => {
+    tempGraph.style.display = "none";
+    conditionGraph.style.display = "none";
+    humidityGraph.style.display = "grid";
+    solarGraph.style.display = "none";
+    pressureGraph.style.display = "none";
+
+    tempBtn.classList.remove('active');
+    conditionBtn.classList.remove('active');
+    humidityBtn.classList.add('active');
+    solarBtn.classList.remove('active');
+    pressureBtn.classList.remove('active');
+});
+
+solarBtn.addEventListener('click', () => {
+    tempGraph.style.display = "none";
+    conditionGraph.style.display = "none";
+    humidityGraph.style.display = "none";
+    solarGraph.style.display = "grid";
+    pressureGraph.style.display = "none";
+
+    tempBtn.classList.remove('active');
+    conditionBtn.classList.remove('active');
+    humidityBtn.classList.remove('active');
+    solarBtn.classList.add('active');
+    pressureBtn.classList.remove('active');
+});
+
+pressureBtn.addEventListener('click', () => {
+    tempGraph.style.display = "none";
+    conditionGraph.style.display = "none";
+    humidityGraph.style.display = "none";
+    solarGraph.style.display = "none";
+    pressureGraph.style.display = "grid";
+
+    tempBtn.classList.remove('active');
+    conditionBtn.classList.remove('active');
+    humidityBtn.classList.remove('active');
+    solarBtn.classList.remove('active');
+    pressureBtn.classList.add('active');
+});
+
+
+
+// //Circular Progress functionality
+// let circularProgress = document.querySelector('.circular-progress');
+// let progressValue = document.querySelector('.progress-value');
+
+// let progressStartValue = today.temp;
+// let speed = 100;
+
+// let progress = setInterval(() => {
+//  //   progressStartValue++;
+
+//     progressValue.textContent = `${progressStartValue}°C`;
+
+//     // Calculate color based on progress
+//     let color;
+//     if (progressStartValue <= 18) {
+//         color = 'blue';
+//     } else if (progressStartValue <= 30) {
+//         color = 'green';
+//     } else if (progressStartValue <= 50) {
+//         color = 'yellow';
+//     } else {
+//         color = 'red';
+//     }
+
+//     // Update circular progress gradient
+//     circularProgress.style.background = `conic-gradient(${color} ${progressStartValue * 3.6}deg, whitesmoke ${progressStartValue * 3.6}deg)`;
+
+//     // Update progressEndValue dynamically inside the loop
+//     let progressEndValue = parseFloat(currentTemp);
+
+//     if (progressStartValue === progressEndValue) {
+//         clearInterval(progress);
+//     }
+// }, speed);
 

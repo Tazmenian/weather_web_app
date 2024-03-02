@@ -156,29 +156,37 @@
                 
                 <div class="analytics-navigation">
                     <ul>
-                        <li class="active">Temperature</li>
-                        <li>Weather Condition</li>
-                        <li>Humidity</li>
-                        <li>Solar Energy</li>
-                        <li>Pressure</li>
+                        <li class="temp-btn active">Temperature</li>
+                        <li class="condition-btn">Weather Condition</li>
+                        <li class="hum-btn">Humidity</li>
+                        <li class="solar-btn">Solar Energy</li>
+                        <li class="pressure-btn">Pressure</li>
                     </ul>
                 </div>
 
                 <div class="graph-container">
-
                     <div class="temp-graph graph active">
+                        <div class="days-graph">temp</div>
+                        <div class="current-data">
+                            <div class="circular-container">
+                                <div class="circular-progress">
+                                    <span class="progress-value">0°C</span>
+                                </div>
+                                <span class="progress-title">Temperature</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="condition-graph graph">
-                        <div class="days-graph"></div>
-                        <div class="current-data"></div>
+                        <div class="days-graph">condition</div>
+                        <div class="current-data">condition</div>
                     </div>
                     <div class="humidity-graph graph">
-                        <div class="days-graph"></div>
-                        <div class="current-data"></div>
+                        <div class="days-graph">hum</div>
+                        <div class="current-data">hum</div>
                     </div>
                     <div class="solarEnergy-graph graph">
-                        <div class="days-graph"></div>
-                        <div class="current-data"></div>
+                        <div class="days-graph">solar</div>
+                        <div class="current-data">solar</div>
                     </div>
                     <div class="pressure-graph graph">
                         <div class="days-graph"></div>
