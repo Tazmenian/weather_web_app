@@ -156,38 +156,87 @@ function getWeatherData(city, unit, hourlyorWeek) {
         // Pan the map to the weather location
         map.panTo([data.latitude, data.longitude]);
 
-        let circularProgress = document.querySelector('.circular-progress');
-        let progressValue = document.querySelector('.progress-value');
 
-        let progressStartValue = today.temp;
-        let speed = 100;
+        //current data graph
+        let tempProgress = document.querySelector('.temp-progress');
+        let tempValue = document.querySelector('.temp-value');
 
-        let progress = setInterval(() => {
+        let solarProgress = document.querySelector('.solar-progress');
+        let solarValue = document.querySelector('.solar-value');
+
+        let pressureProgress = document.querySelector('.pressure-progress');
+        let pressureValue = document.querySelector('.pressure-value');
+
+        let humProgress = document.querySelector('.humidity-progress');
+        let humValue = document.querySelector('.humidity-value');
+
+        let tempStartValue = today.temp;
+        let humStartValue = today.humidity;
+        let solarStartValue = today.solarenergy;
+        let pressureStartValue = today.pressure;
+        //let speed = 100;
+
+        //let progress = setInterval(() => {
  //   progressStartValue++;
 
-    progressValue.textContent = `${progressStartValue}°C`;
+        tempValue.textContent = `${tempStartValue}°C`;
+        humValue.textContent = `${humStartValue}%`;
+        solarValue.textContent = `${solarStartValue}kwh`;
+        pressureValue.textContent = `${pressureStartValue}hPa`;
 
-    // Calculate color based on progress
-    let color;
-    if (progressStartValue <= 18) {
-        color = 'blue';
-    } else if (progressStartValue <= 30) {
-        color = 'green';
-    } else if (progressStartValue <= 50) {
-        color = 'yellow';
-    } else {
-        color = 'red';
-    }
+        // Calculate color based on Temp
+        let color;
+        if (tempStartValue <= 18) {
+            color = 'blue';
+        } else if (tempStartValue <= 30) {
+            color = 'var(--color-success)';
+        } else if (tempStartValue <= 50) {
+            color = 'var(--color-warning)';
+        } else {
+            color = 'red';
+        };
 
-    // Update circular progress gradient
-    circularProgress.style.background = `conic-gradient(${color} ${progressStartValue * 3.6}deg, whitesmoke ${progressStartValue * 3.6}deg)`;
+        // Calculate color based on Temp
+        let hum;
+        if (humStartValue <= 30) {
+            hum = 'blue';
+        } else if (humStartValue <= 60) {
+            hum = 'var(--color-success)';
+        } else if (humStartValue <= 70) {
+            hum = 'var(--color-warning)';
+        } else {
+            hum = 'red';
+        };
 
-    // Update progressEndValue dynamically inside the loop
+        let solar;
+        if (solarStartValue <= 3) {
+            solar = 'blue';
+        } else if (solarStartValue <= 7) {
+            solar = 'var(--color-success)';
+        } else {
+            solar = 'red';
+        };
 
+        let pressure;
+        if (pressureStartValue >= 1030) {
+            pressure = 'blue';
+        } else if (pressureStartValue >= 970) {
+            pressure = 'var(--color-success)';
+        } else {
+            pressure = 'red';
+        };
+
+        // Update circular progress gradient
+        tempProgress.style.background = `conic-gradient(${color} ${tempStartValue * 3.6}deg, whitesmoke ${tempStartValue * 3.6}deg)`;
+        humProgress.style.background = `conic-gradient(${hum} ${humStartValue * 3.6}deg, whitesmoke ${humStartValue * 3.6}deg)`;
+        solarProgress.style.background = `conic-gradient(${solar} ${solarStartValue * 3.6}deg, whitesmoke ${solarStartValue * 3.6}deg)`;
+        pressureProgress.style.background = `conic-gradient(${pressure} ${pressureStartValue * 3.6}deg, whitesmoke ${pressureStartValue * 3.6}deg)`;
+        // Update progressEndValue dynamically inside the loop
+
+        console.log(today.pressure);
+        console.log(today.solarenergy);
     
-        clearInterval(progress);
-    
-    }, speed);
+    //}, speed);
     })
     .catch((err) => {
         alert("City Invalid");
