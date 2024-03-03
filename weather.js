@@ -16,6 +16,7 @@ const airQuality = document.querySelector(".air-quality");
 const airQualityStatus = document.querySelector(".air-quality-status");
 const visibilityStatus = document.querySelector(".visibility-status");
 const weatherCards = document.querySelector("#weather-cards");
+const analyticsCards = document.querySelector(".condition-graph");
 const hourlyBtn = document.querySelector(".hourly");
 const weekBtn = document.querySelector(".week");
 const tempUnit = document.querySelectorAll(".temp-unit");
@@ -371,6 +372,7 @@ function getHour(time) {
 function updateForecast(data, unit, type, date) {
 
     weatherCards.innerHTML = "";
+    analyticsCards.innerHTML = "";
 
     let numCards = (type === "day") ? 24 : 7; // 24 cards for hourly, 7 for weekly
 
@@ -378,6 +380,7 @@ function updateForecast(data, unit, type, date) {
         let card = document.createElement("div");
         card.classList.add("card");
         
+        let date = data[i].datetime;
         let dayName = (type === "week") ? getDayName(data[i].datetime) : getHour(data[i].datetime);
         let dayTemp = (unit === "f") ? celsiusToFahrenheit(data[i].temp) : data[i].temp;
         let iconSrc = getIcon(data[i].icon);
@@ -385,6 +388,7 @@ function updateForecast(data, unit, type, date) {
 
         card.innerHTML = `
             <h2 class="day-name">${dayName}</h2>
+            <small>${date}</small>
             <div class="card-icon">
                 <img src="${iconSrc}" alt="">
             </div>
@@ -394,8 +398,12 @@ function updateForecast(data, unit, type, date) {
             </div>   
         `;
         weatherCards.appendChild(card);
+
+        // Creating a new card element for analyticsCards
+        let analyticsCard = card.cloneNode(true);
+        analyticsCards.appendChild(analyticsCard);
     } 
-}
+}  
 
 function changeBackground(condition){
     let bg = "";
@@ -735,38 +743,142 @@ pressureBtn.addEventListener('click', () => {
 
 
 
-// //Circular Progress functionality
-// let circularProgress = document.querySelector('.circular-progress');
-// let progressValue = document.querySelector('.progress-value');
+// CHARTING functionality
 
-// let progressStartValue = today.temp;
-// let speed = 100;
+const ctx1 = document.getElementById('temp-chart-data');
 
-// let progress = setInterval(() => {
-//  //   progressStartValue++;
+new Chart(ctx1, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Orange'],
+    datasets: [{
+      label: 'Temperature',
+      data: [4, 10, 3, 5, 2, 3, 5],
+      borderWidth: 1,
+      backgroundColor: 'skyblue', // Change the color of the bars here
+      borderColor: 'white',
+      color: 'white'
+    }]
+  },
+  options: {
+    scales: {
+      x: {
+        beginAtZero: true,
+        ticks: {
+          color: 'white' // Change the color of the x-axis labels here
+        },
+        grid: {
+            color: 'rgba(255, 255, 255, 0.2)' // Change the color of the x-axis gridlines here
+          }
+      },
+      y: {
+        beginAtZero: true,
+        ticks: {
+          color: 'white' // Change the color of the y-axis labels here
+        },
+        grid: {
+            color: 'rgba(255, 255, 255, 0.2)' // Change the color of the x-axis gridlines here
+          }
+      }
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: 'white' // Change the color of the legend labels here
+        }
+      }
+    }
+  }
+});
 
-//     progressValue.textContent = `${progressStartValue}°C`;
+const ctx2 = document.getElementById('hum-chart-data');
 
-//     // Calculate color based on progress
-//     let color;
-//     if (progressStartValue <= 18) {
-//         color = 'blue';
-//     } else if (progressStartValue <= 30) {
-//         color = 'green';
-//     } else if (progressStartValue <= 50) {
-//         color = 'yellow';
-//     } else {
-//         color = 'red';
-//     }
+new Chart(ctx2, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Orange'],
+    datasets: [{
+      label: 'Temperature',
+      data: [4, 10, 3, 5, 2, 3, 5],
+      borderWidth: 1,
+      backgroundColor: 'skyblue', // Change the color of the bars here
+      borderColor: 'white',
+      color: 'white'
+    }]
+  },
+  options: {
+    scales: {
+      x: {
+        beginAtZero: true,
+        ticks: {
+          color: 'white' // Change the color of the x-axis labels here
+        },
+        grid: {
+            color: 'rgba(255, 255, 255, 0.2)' // Change the color of the x-axis gridlines here
+          }
+      },
+      y: {
+        beginAtZero: true,
+        ticks: {
+          color: 'white' // Change the color of the y-axis labels here
+        },
+        grid: {
+            color: 'rgba(255, 255, 255, 0.2)' // Change the color of the x-axis gridlines here
+          }
+      }
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: 'white' // Change the color of the legend labels here
+        }
+      }
+    }
+  }
+});
 
-//     // Update circular progress gradient
-//     circularProgress.style.background = `conic-gradient(${color} ${progressStartValue * 3.6}deg, whitesmoke ${progressStartValue * 3.6}deg)`;
+const ctx3 = document.getElementById('solar-chart-data');
 
-//     // Update progressEndValue dynamically inside the loop
-//     let progressEndValue = parseFloat(currentTemp);
-
-//     if (progressStartValue === progressEndValue) {
-//         clearInterval(progress);
-//     }
-// }, speed);
-
+new Chart(ctx3, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Orange'],
+    datasets: [{
+      label: 'Temperature',
+      data: [4, 10, 3, 5, 2, 3, 5],
+      borderWidth: 1,
+      backgroundColor: 'skyblue', // Change the color of the bars here
+      borderColor: 'white',
+      color: 'white'
+    }]
+  },
+  options: {
+    scales: {
+      x: {
+        beginAtZero: true,
+        ticks: {
+          color: 'white' // Change the color of the x-axis labels here
+        },
+        grid: {
+            color: 'rgba(255, 255, 255, 0.2)' // Change the color of the x-axis gridlines here
+          }
+      },
+      y: {
+        beginAtZero: true,
+        ticks: {
+          color: 'white' // Change the color of the y-axis labels here
+        },
+        grid: {
+            color: 'rgba(255, 255, 255, 0.2)' // Change the color of the x-axis gridlines here
+          }
+      }
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: 'white' // Change the color of the legend labels here
+        }
+      }
+    }
+  }
+});

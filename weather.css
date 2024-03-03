@@ -468,16 +468,15 @@ img {
     color: var(--color-white);
 }
 .analytics-navigation ul li:first-child {
-    border-radius: 5px 0 0 5px;
+    border-radius: 5px 0 0 0;
 }
 .analytics-navigation ul li:last-child {
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 0 0;
 }
 
 .graph-container {
     width: 100%;
     height: 350px;
-    background: var(--color-warning);
     margin-bottom: 10px;
     display: inline-block;
     border-radius: var(--border-radius-1);
@@ -487,7 +486,6 @@ img {
     display: none;
     grid-template-columns: 3fr 1fr;
     height: 100%;
-    background: var(--color-info-light);
     transition: all 300ms ease;
   }
 
@@ -501,8 +499,8 @@ img {
     width: 100%;
     height: 100%;
     padding: 10px;
-    border-radius: var(--border-radius-1);
-    background: var(--color-white);
+    border-radius:0 var(--border-radius-1)  var(--border-radius-1) 0;
+    background: var(--color-dark);
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -517,6 +515,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: rgba(209, 209, 224, 0.708) 0px 4px 16px, rgba(202, 202, 212, 0.594) 0px 8px 32px;
 }
 .circular-progress::before{
     content: "";
@@ -524,66 +523,70 @@ img {
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    background-color: var(--color-white);
+    background-color: var(--color-dark);
     top: 25px;
     left: 25px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;;
 }
 .progress-value {
     position: relative;
     font-size: 40px;
     font-weight: 600;
-    color: #7d2ae8;
+    color: var(--color-white);
 }
 .progress-title {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 500;
-    color: var(--color-dark);
+    color: var(--color-white);
     margin: 0 auto;
 }
-
-
-.condition-graph {
+ .condition-graph {
     width: 100%;
-    height: 100%; /* Ensure the parent container has a defined height */
+    height: 100%; 
     display: none;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     background-image: url(images/weather_condition.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     align-items: center;
     border-radius: var(--border-radius-1);
+    justify-content: space-between;
+    color: var(--color-white);
+} 
+.condition-graph.graph .card {
+    /* Your styling for the cloned cards inside .condition-graph */
+    /* Adjust as needed */
+    width: 90% !important;
+    height: 70% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    background: var(--color-dark);
+    opacity: 0.7;
+    border-radius: var(--border-radius-2);
+    justify-content: center;
+    margin: 0 auto;
 }
 
-.condition-graph .day {
-    width: 90%;
-    height: 90%;
-    background: var(--color-dark);
-    margin: 0 auto;
-    border-radius: var(--border-radius-1);
-    opacity: 0.8;
-    display: flex;
-    flex-direction: column;
-}
-.image-condition{
+.condition-graph.graph .card .card-icon{
     width: 100%;
-    height: 150px;
 }
-.condition-details {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--color-white);
+
+/*---- Chart styling -----*/
+
+.temp-chart {
+    width: 100%;
+    height: 100%;
+    background: var(--color-dark);
+    border-radius: 0 0 0 var(--border-radius-1) ;
+
+
 }
-.condition-date {
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--color-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.temp-chart canvas {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background: var(--color-dark);
 }
-  
 
 
