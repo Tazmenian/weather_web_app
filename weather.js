@@ -798,7 +798,7 @@ new Chart(ctx2, {
   data: {
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Orange'],
     datasets: [{
-      label: 'Temperature',
+      label: 'Humidity',
       data: [4, 10, 3, 5, 2, 3, 5],
       borderWidth: 1,
       backgroundColor: 'skyblue', // Change the color of the bars here
@@ -840,6 +840,53 @@ new Chart(ctx2, {
 const ctx3 = document.getElementById('solar-chart-data');
 
 new Chart(ctx3, {
+  type: 'line',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Orange'],
+    datasets: [{
+      label: 'Solar Energy',
+      data: [4, 10, 3, 5, 2, 3, 5],
+      borderWidth: 4,
+      backgroundColor: 'skyblue', // Change the color of the bars here
+      borderColor: 'yellow',
+      color: 'white'
+    }]
+  },
+  options: {
+    scales: {
+      x: {
+        beginAtZero: true,
+        ticks: {
+          color: 'white' // Change the color of the x-axis labels here
+        },
+        grid: {
+            color: 'rgba(255, 255, 255, 0.2)' // Change the color of the x-axis gridlines here
+          }
+      },
+      y: {
+        beginAtZero: true,
+        ticks: {
+          color: 'white' // Change the color of the y-axis labels here
+        },
+        grid: {
+            color: 'rgba(255, 255, 255, 0.2)' // Change the color of the x-axis gridlines here
+          }
+      }
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: 'white' // Change the color of the legend labels here
+        }
+      }
+    }
+  }
+});
+
+
+const ctx4 = document.getElementById('pressure-chart-data');
+
+new Chart(ctx4, {
   type: 'bar',
   data: {
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Orange'],

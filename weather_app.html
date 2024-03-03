@@ -16,10 +16,10 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li class="dashboard active"><a href="#" class="active"><i class="fa-solid fa-table-cells-large"></i>Dashboard</a></li>
-                    <li class="analytics"><a href="#"><i class="fa-solid fa-chart-simple"></i>Analytics</a></li>
-                    <li class="navigation"><a href="#"><i class="fa-solid fa-location-arrow"></i>Navigation Menu</a></li>
-                    <li class="logout"><a href="#"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></li>
+                    <li class="dashboard active"><a href="#" class="active"><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a></li>
+                    <li class="analytics"><a href="#"><i class="fa-solid fa-chart-simple"></i><span>Analytics</span></a></li>
+                    <li class="navigation"><a href="#"><i class="fa-solid fa-location-arrow"></i><span>Navigation Menu</span></a></li>
+                    <li class="logout"><a href="#"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a></li>
                 </ul>
             </div>
 
@@ -176,7 +176,7 @@
                                 <div class="circular-progress temp-progress">
                                     <span class="progress-value temp-value">0°C</span>
                                 </div>
-                                <span class="progress-title">Current</span>
+                                <span class="progress-title">Current Temp</span>
                             </div>
                         </div>
                     </div>
@@ -194,14 +194,14 @@
                                 <div class="circular-progress humidity-progress">
                                     <span class="progress-value humidity-value ">0°C</span>
                                 </div>
-                                <span class="progress-title">Humidity</span>
+                                <span class="progress-title">Current Humidity</span>
                             </div>
                         </div>
                     </div>
                     <div class="solarEnergy-graph graph">
                         <div class="days-graph">
-                            <div class="solar-chart-data">
-                                <canvas id="Chart"></canvas>
+                            <div class="temp-chart">
+                                <canvas id="solar-chart-data"></canvas>
                             </div>
                         </div>
                         <div class="current-data">
@@ -209,14 +209,14 @@
                                 <div class="circular-progress solar-progress">
                                     <span class="progress-value solar-value">0°C</span>
                                 </div>
-                                <span class="progress-title">Solar Energy</span>
+                                <span class="progress-title">Current Solar Energy</span>
                             </div>
                         </div>
                     </div>
                     <div class="pressure-graph graph">
                         <div class="days-graph">
                             <div class="temp-chart">
-                                <canvas id="Chart"></canvas>
+                                <canvas id="pressure-chart-data"></canvas>
                             </div>
                         </div>
                         <div class="current-data">
@@ -224,7 +224,7 @@
                                 <div class="circular-progress pressure-progress">
                                     <span class="progress-value pressure-value">0°C</span>
                                 </div>
-                                <span class="progress-title">Pressure</span>
+                                <span class="progress-title">Current Pressure</span>
                             </div>
                         </div>
                     </div>

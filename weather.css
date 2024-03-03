@@ -38,7 +38,6 @@ body {
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    min-width: 100px;
     padding: 50px;
     background: var(--color-info-dark);
     /*background-image: var(--color-gradient);
@@ -515,7 +514,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: rgba(209, 209, 224, 0.708) 0px 4px 16px, rgba(202, 202, 212, 0.594) 0px 8px 32px;
+    box-shadow: rgba(220, 210, 210, 0.882) 0px 3px 8px;
 }
 .circular-progress::before{
     content: "";
@@ -590,3 +589,37 @@ img {
 }
 
 
+/*============ Media Qeury===========*/
+@media screen and (max-width: 1200px) {
+    .menu li span {
+        /* Hide the text */
+        display: none;
+    }
+    .sidebar .logo{
+        display: none;
+    }
+    .menu li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .wrapper {
+        display: flex;
+        width: 100%;
+        min-width: 100vh;
+        border-radius: var(--border-radius-2);
+    }
+    .sidebar {
+        width: 100px;
+        display: block;
+        flex-direction: column;
+        justify-content: space-between;
+        background: var(--color-background);
+    }
+    .search ul {
+        overflow-y:visible;
+        position: relative;
+    }
+
+    /* Optional: Show only icons */
+}
