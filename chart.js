@@ -58,6 +58,7 @@ function displayWeatherData(data) {
         Humidities.push(humNum); // Push the temperature value into the array
     });
 
+    // Solar Energy array
     const solarIndices = [0, 1, 2, 3, 4, 5, 6];
     const solarEnergy = [];
 
@@ -67,7 +68,17 @@ function displayWeatherData(data) {
         solarEnergy.push(solarNum); // Push the temperature value into the array
     });
 
-    console.log(temperatures); // Output the array of temperatures
+    // Pressure array
+    const pressureIndices = [0, 1, 2, 3, 4, 5, 6];
+    const pressure = [];
+
+    pressureIndices.forEach(index => {
+        const press = data.days[index]; // Get the data of each day
+        const pressureNum = press.pressure; // Access the temperature value
+        pressure.push(pressureNum); // Push the temperature value into the array
+    });
+
+    console.log(temperatures); // Output the array of temperaturegit s
     console.log(Humidities); 
 
     // CHARTING functionality
@@ -221,35 +232,15 @@ new Chart(ctx3, {
   }
 });
 
-
-
-}
-
-const fetchBtn = document.querySelector('.fetch-data');
-fetchBtn.addEventListener('click', fetchWeatherData);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const ctx4 = document.getElementById('pressure-chart-data');
 
 new Chart(ctx4, {
   type: 'bar',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Orange'],
+    labels: daysOfWeek,
     datasets: [{
       label: 'Temperature',
-      data: [4, 10, 3, 5, 2, 3, 5],
+      data: pressure,
       borderWidth: 1,
       backgroundColor: 'none', // Change the color of the bars here
       borderColor: 'white',
@@ -286,3 +277,22 @@ new Chart(ctx4, {
     }
   }
 });
+
+}
+
+const fetchBtn = document.querySelector('.fetch-data');
+fetchBtn.addEventListener('click', fetchWeatherData);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
