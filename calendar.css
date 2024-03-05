@@ -1,0 +1,136 @@
+
+:root {
+    --color-primary: #7380ec;
+    --color-danger: #f15214;
+    --color-success: #23e6b5;
+    --color-warning: rgb(241, 180, 100);
+    --color-white: #ffffff;
+    --color-info-dark: #a7a9c3;
+    --color-info-light: #d1d4ee;
+    --color-dark: #5e638d;
+    --color-light: whitesmoke;
+    --color-primary-variant: #1a2edb;
+    --color-dark-variant: #74757c;
+    --color-background: #e7e7f0;
+    --color-gradient: linear-gradient(135deg, #23d9f1, #2b4958);
+  
+    --card-border-radius: 1rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+    
+  
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+  
+    --box-shadow: 0 2rem 3rem var(--color-light);  
+  }
+
+* {box-sizing: border-box;}
+ul {list-style-type: none;}
+
+.calendar-container {
+    width: 100%;
+    height: fit-content;
+    background:#1a2edb;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.month {
+  padding: 70px 25px;
+  width: 100%;
+  height: 40%;
+  background: #1abc9c;
+  text-align: center;
+  border-radius: 10px 10px 0  0 ;
+  background-image: url(images/ocean-coast-bali.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.month .prev {
+  float: left;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.month .next {
+  float: right;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+.weekdays {
+  margin: 0;
+  padding: 10px 0;
+  background-color: #ddd;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 13%;
+    color: #666;
+    text-align: center;
+    font-weight: 600;
+}
+
+.days {
+  padding: 10px 0;
+  background: #eee;
+  margin: 0;
+  border-radius:  0  0 10px 10px;
+}
+
+.days li {
+  list-style-type: none;
+  display: inline-block;
+  width: 13.6%;
+  text-align: center;
+  margin-bottom: 5px;
+  font-size:15px;
+  color: #777;
+  transition: all 300ms ease;
+  border-radius: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.days li .active {
+  padding: 5px;
+  background: #1abc9c;
+  color: white !important
+}
+.days li:hover {
+    background: var(--color-dark);
+    color: var(--color-white);
+}
+
+
+
+/* Add media queries for smaller screens */
+@media screen and (max-width:720px) {
+  .weekdays li, .days li {width: 13.1%;}
+}
+
+@media screen and (max-width: 420px) {
+  .weekdays li, .days li {width: 12.5%;}
+  .days li .active {padding: 2px;}
+}
+
+@media screen and (max-width: 290px) {
+  .weekdays li, .days li {width: 12.2%;}
+}

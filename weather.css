@@ -589,6 +589,23 @@ img {
 }
 
 
+
+.upper-container {
+    height: 40vh; /* Set explicit height */
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.upper-container .widget_weather {
+    width: 300px; /* Adjusted width to fill the column */
+    height: 100%; /* Set height to fill parent */
+    border-radius: var(--border-radius-1);
+    background: #1a2edb;
+    position: relative;
+}
+
+
 /*============ Media Qeury===========*/
 @media screen and (max-width: 1200px) {
     .menu li span {
