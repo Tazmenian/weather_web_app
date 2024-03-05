@@ -601,10 +601,15 @@ img {
     width: 300px; /* Adjusted width to fill the column */
     height: 100%; /* Set height to fill parent */
     border-radius: var(--border-radius-1);
-    background: #1a2edb;
     position: relative;
+    background-image: url(images/ocean-coast-bali.jpg);
+    background-size: cover;
+    background-position: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
-
+.upper-container .widget_weather .widget {
+    border-radius: var(--border-radius-1);
+}
 
 /*============ Media Qeury===========*/
 @media screen and (max-width: 1200px) {
