@@ -121,26 +121,6 @@ ul {list-style-type: none;}
 
 
 
-/* ------  Lower portion -----*/
-.todo-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
-}
-
-form {
-  margin-bottom: 10px;
-}
-
-button {
-  margin: 5px;
-}
-
-li {
-  list-style: none;
-  margin-bottom: 5px;
-}
 
 /* Add media queries for smaller screens */
 @media screen and (max-width:720px) {
