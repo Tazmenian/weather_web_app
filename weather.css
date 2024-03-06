@@ -599,7 +599,7 @@ img {
 
 .upper-container .widget_weather {
     width: 300px; /* Adjusted width to fill the column */
-    height: 100%; /* Set height to fill parent */
+    height: 90%; /* Set height to fill parent */
     border-radius: var(--border-radius-1);
     position: relative;
     background-image: url(images/ocean-coast-bali.jpg);
