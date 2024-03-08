@@ -11,7 +11,7 @@
     --color-primary-variant: #1a2edb;
     --color-dark-variant: #74757c;
     --color-background: #e7e7f0;
-    --color-gradient: linear-gradient(135deg, #23d9f1, #2b4958);
+    --color-gradient: linear-gradient(135deg, #23d9f1, #47945e);
   
     --card-border-radius: 1rem;
     --border-radius-1: 0.4rem;
@@ -37,32 +37,37 @@
   }
   .todo-container h2 {
     border-radius: var(--border-radius-3);
-    border: 2px solid var(--color-dark);
     transition: all 300ms ease;
     text-align: center; /* This centers the text */
     padding: 10px;
     font-size: 20px;
+    background: var(--color-light);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .todo-title{
     display: flex;
 }
 
-  .todo-container h2:hover {
-    background: var(--color-primary);
-    color: var(--color-white);
-  }
+.todo-container h2:hover {
+  box-shadow: none;
+}
 
-  button  {
+.todo-container button  {
     margin: 5px;
     background: transparent;
     margin-left: 15px;
     background: var(--color-primary);
     border-radius: 50%;
     transition: all 300ms ease;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: none;
+  }
+  .todo-container button i{
+    color: var(--color-white);
   }
   #addTodo:hover{
-    background: var(--color-white);
-    border: 1px solid var(--color-dark);
+    box-shadow: none;
+
   }
 
   #addTodo i{
@@ -72,13 +77,43 @@
     margin: 10px;
     transition: all 300ms ease;
   }
-  button i:hover{
-    color: var(--color-dark);
-  }
-  
+
+
+
   #todoFormContainer {
     margin-top: 10px;
     border-radius: var(--border-radius-3);
     padding: 5px;
-    border: 1px solid var(--color-dark);
   }
+
+  #todoFormContainer {
+    background: #23d9f1;
+    transition: all 300ms ease;
+    margin-top: 10px;
+  }
+  #todoFormContainer button i{
+    margin: 5px;
+  }
+  #todoFormContainer form input{
+    border-radius: var(--border-radius-3);
+    padding: 3px;
+  }
+  .todo-container ul li{
+    margin-top: 10px;
+    border-radius: var(--border-radius-3);
+    padding: 5px;
+    background: var(--color-success);
+  }
+  .todo-container ul li button{
+    padding: 5px;
+    cursor: pointer;
+  }
+  .todo-container ul {
+    overflow-y: scroll; /* Enable vertical scrolling */
+    height: 250px; /* Set a fixed height for the container */
+  }
+
+
+ 
+
+
