@@ -21,7 +21,7 @@
                     <li class="dashboard active"><a href="#" class="active"><i class="fa-solid fa-table-cells-large"></i><span>Dashboard</span></a></li>
                     <li class="analytics"><a href="#"><i class="fa-solid fa-chart-simple"></i><span>Analytics</span></a></li>
                     <li class="navigation"><a href="#"><i class="fa-solid fa-location-arrow"></i><span>Navigation Menu</span></a></li>
-                    <li class="logout"><a href="#"><i class="fa-solid fa-right-from-bracket"></i><span>Logout</span></a></li>
+                    <li class="logout" onclick="logout()"><a href="#"><i class="fa-solid fa-right-from-bracket" ></i><span>Logout</span></a></li>
                 </ul>
             </div>
 
@@ -39,7 +39,7 @@
                     </form>
                 </ul>
                 <div class="photo-profile">
-                    <a href="#"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    <a href="#" ><i class="fa-solid fa-right-from-bracket" onclick="logout()"></i></a>
                     <div class="profile-label">
                         <p>Mark</p>
                         <small>Admin</small>
@@ -295,11 +295,6 @@
         
 
 
-        
-
-
-
-
     </div>
     <script type="module" src="weather.js"></script>
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -307,7 +302,18 @@
     <script src="chart.js"></script>
     <script src="calendar.js"></script>
     <script src="todo.js"></script>
-    
+    <script src="signin_signout.js"></script>
+
+    <script>
+        function logout() {
+            sessionStorage.removeItem('user');
+            window.location.href = 'login.html';
+            alert('You have been successfully logged out.');
+        }
+    </script>
+
+
+ 
 
 </body>
 </html>
