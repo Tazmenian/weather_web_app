@@ -105,6 +105,9 @@ img {
 .sidebar .logo{
     margin: 10px;
 }
+.sidebar .logo2 {
+    display: none;
+}
 .search {
     display: flex;
     align-items: center;
@@ -613,12 +616,16 @@ img {
 
 /*============ Media Qeury===========*/
 @media screen and (max-width: 1200px) {
+    
     .menu li span {
         /* Hide the text */
         display: none;
     }
     .sidebar .logo{
         display: none;
+    }
+    .sidebar .logo2{
+        display: block;
     }
     .menu li {
         display: flex;
@@ -644,4 +651,42 @@ img {
     }
 
     /* Optional: Show only icons */
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper {
+        width: 100%; /* Adjust width to fill the viewport */
+        min-width: 600px; /* Remove minimum width */
+        padding: 10px; /* Adjust padding for smaller screens */
+        border-radius: 0; /* Remove border-radius */
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .weather_map {
+        display: flex; /* Use flexbox for responsiveness */
+        flex-direction: column; /* Arrange weather map components vertically */
+    }
+
+    .map_container {
+        height: 200px; /* Decrease map height for smaller screens */
+    }
+
+    .map {
+        height: 100%; /* Ensure the map fills its container */
+    }
+
+    .update_weather {
+        display: flex; /* Display weather update section */
+        flex-direction: column; /* Arrange weather update components vertically */
+        align-items: center; /* Center content horizontally */
+    }
+
+    .option {
+        justify-content: center; /* Center options horizontally */
+    }
+
+    /* Adjust other styles as needed for smaller screens */
 }
