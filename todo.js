@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function() {
     
     function createTodoForm() {
         const form = document.createElement("form");
+        const formcontainer = document.querySelector('#todoFormContainer');
+       
+
         form.innerHTML = `
           <input type="time" name="time">
           <input type="date" name="date">
@@ -20,22 +23,30 @@ document.addEventListener("DOMContentLoaded", function() {
           <button type="button" class="close-button"> <i class="fa-solid fa-times"></i>
           </button>
         `;
-    
+        formcontainer.style.display = 'block';
+        
+
         form.addEventListener("submit", (event) => {
             event.preventDefault();
             const formData = new FormData(form);
             const time = formData.get("time");
             const date = formData.get("date");
             const activity = formData.get("activity");
+            const listContainer = document.querySelector('#todoList');
+            const formcontainer = document.querySelector('#todoFormContainer');
     
             const todoItem = createTodoItem(time, date, activity);
             todoList.appendChild(todoItem);
             todoFormContainer.removeChild(form);
+            listContainer.style.display = 'block';
+            formcontainer.style.display = 'none';
         });
     
         form.querySelector('.close-button').addEventListener('click', (event) => {
             event.preventDefault();
+            const formcontainer = document.querySelector('#todoFormContainer');
             todoFormContainer.removeChild(form);
+            formcontainer.style.display = 'none';
         });
     
         return form;
@@ -71,8 +82,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const deleteButton = li.querySelector(".delete");
         deleteButton.addEventListener("click", function() {
             todoList.removeChild(li);
+            const listItems = todoList.querySelectorAll('li');
+            const listContainer = document.querySelector('#todoList');
+            if (listItems.length === 0){
+                listContainer.style.display = 'none';
+            }
         });
-
         return li;
     }
 });

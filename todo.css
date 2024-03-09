@@ -90,6 +90,7 @@
     background: #23d9f1;
     transition: all 300ms ease;
     margin-top: 10px;
+    display: none;
   }
   #todoFormContainer button i{
     margin: 5px;
@@ -111,6 +112,9 @@
   .todo-container ul {
     overflow-y: scroll; /* Enable vertical scrolling */
     height: 250px; /* Set a fixed height for the container */
+  }
+  #todoList {
+    display: none;
   }
 
 
