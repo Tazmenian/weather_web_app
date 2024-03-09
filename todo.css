@@ -117,7 +117,26 @@
     display: none;
   }
 
-
+  @media screen and (max-width: 600px) {
+    .todo-container {
+      padding: 0;
+      margin-top: 20px;
+    }
+    #todoFormContainer {
+      width: 400px;
+      margin-top: 10px;
+      border-radius: var(--border-radius-3);
+      padding: 5px;
+      display: flex;
+    }
+    #todoFormContainer form input{
+      width: 90px;
+    }
+    #todoList {
+      display: none;
+      width: 90%;
+    }
+  }
  
 
 
