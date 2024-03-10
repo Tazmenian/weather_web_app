@@ -693,7 +693,10 @@ img {
         align-items: center; /* Center content horizontally */
     }
     .calendar-container{
-        width: 300px;
+        width: 200px;
+    }
+    .calendar-container .month{
+        width: 100%;
     }
 
     .option {
@@ -714,12 +717,13 @@ img {
         display: none;
     }
     .upper-container .widget_weather {
-        width: auto; /* Adjusted width to fill the column */ /* Set height to fill parent */
+        width: 90%; /* Adjusted width to fill the column */ /* Set height to fill parent */
         border-radius: var(--border-radius-1);
         position: relative;
         margin: 0 auto;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     }
+   
 
     .analytics-navigation ul li{
         font-size: 10px;
