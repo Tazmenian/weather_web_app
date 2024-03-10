@@ -438,7 +438,6 @@ img {
 
 .navigation-container {
     width: 100%;
-    min-width: 400px;
     padding: 20px 40px;
     position: relative;
     background-color: var(--color-light);
@@ -654,11 +653,17 @@ img {
 }
 
 @media screen and (max-width: 600px) {
+    .main {
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color-light);
+        padding: 0;
+        margin: 0;
+    }
     .wrapper {
         height: auto;
         width: 100%; /* Adjust width to fill the viewport */
-        min-width: 600px; /* Remove minimum width */
-        padding: 10px; /* Adjust padding for smaller screens */
+        min-width: 420px; /* Remove minimum width */
         border-radius: 0; /* Remove border-radius */
     }
 
@@ -670,7 +675,7 @@ img {
         display: flex; /* Use flexbox for responsiveness */
         flex-direction: column;
         height: 700px;
-        width: 100%;
+        width: auto;
         gap: 30px; /* Arrange weather map components vertically */
     }
 
@@ -687,18 +692,26 @@ img {
         flex-direction: column; /* Arrange weather update components vertically */
         align-items: center; /* Center content horizontally */
     }
+    .calendar-container{
+        width: 300px;
+    }
 
     .option {
         justify-content: center; /* Center options horizontally */
     }
     .upper-container {
         height: auto; /* Set explicit height */
-        width: 100%;
+        width: 90%;
         display: grid;
         grid-template-columns: 1fr;
         gap: 10px;
-    
-    
+    }
+    .navigation-container {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        background-color: var(--color-light);
+        display: none;
     }
     .upper-container .widget_weather {
         width: auto; /* Adjusted width to fill the column */ /* Set height to fill parent */
@@ -709,9 +722,9 @@ img {
     }
 
     .analytics-navigation ul li{
-        font-size: 15px;
-        padding-right: 8.1px;
-        padding-left: 7px;
+        font-size: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
     }
 
     .graph {
