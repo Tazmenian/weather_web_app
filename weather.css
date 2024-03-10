@@ -118,7 +118,7 @@ img {
 
 .search input {
     max-width:300px;
-    min-width: 150px;
+    min-width: 130px;
     height: 40px;
     border: 1px solid var(--color-dark);
     border-radius: var(--border-radius-3);
@@ -615,7 +615,6 @@ img {
 
 /*============ Media Qeury===========*/
 @media screen and (max-width: 1200px) {
-    
     .menu li span {
         /* Hide the text */
         display: none;
@@ -648,14 +647,13 @@ img {
         overflow-y:visible;
         position: relative;
     }
-
-    /* Optional: Show only icons */
 }
 
 @media screen and (max-width: 600px) {
+    /* Adjustments for extra small devices */
     .main {
-        width: 100%;
-        height: 100vh;
+        width: 90%;
+        height: auto;
         background-color: var(--color-light);
         padding: 0;
         margin: 0;
@@ -663,14 +661,60 @@ img {
     .wrapper {
         height: auto;
         width: 100%; /* Adjust width to fill the viewport */
-        min-width: 420px; /* Remove minimum width */
+        min-width: 420px; /* Ensure a minimum width for content */
         border-radius: 0; /* Remove border-radius */
     }
-
-    .sidebar {
-        display: none;
+    .main nav .photo-profile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
     }
-
+    .main nav .photo-profile img {
+        width: 45px;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+    .search input {
+        width: calc(100% - 50px); /* Adjust width to fit available space */
+        margin-left: 5px; /* Add some space between input and button */
+    }
+    .search button {
+        min-width: 40px;
+        height: 40px;
+        border: 1px solid var(--color-dark);
+        border-radius: 50%;
+        font-size: 14px;
+        box-shadow: var(--box-shadow);
+        background: var(--color-white);
+        cursor: pointer;
+        margin-left: 0; /* Reset margin for button */
+    }
+    .sidebar {
+        display: none; /* Hide sidebar on small screens */
+    }
+    .condition-rain {
+        gap: 10px;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+        font-size: 12px;
+        text-transform: capitalize;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .highlights .heading{
+        margin-left: 30px;
+    }
+    .highlights .cards{
+        width: auto;
+        margin-top: 5px;
+        margin-bottom: 40px;
+    }
+    .highlights .card2{
+        margin: 0 auto;
+    }
     .weather_map {
         display: flex; /* Use flexbox for responsiveness */
         flex-direction: column;
@@ -678,29 +722,16 @@ img {
         width: auto;
         gap: 30px; /* Arrange weather map components vertically */
     }
-
     .map_container {
         height: auto; /* Decrease map height for smaller screens */
     }
-
     .map {
         height: 100%; /* Ensure the map fills its container */
     }
-
     .update_weather {
         display: flex; /* Display weather update section */
         flex-direction: column; /* Arrange weather update components vertically */
         align-items: center; /* Center content horizontally */
-    }
-    .calendar-container{
-        width: 200px;
-    }
-    .calendar-container .month{
-        width: 100%;
-    }
-
-    .option {
-        justify-content: center; /* Center options horizontally */
     }
     .upper-container {
         height: auto; /* Set explicit height */
@@ -717,20 +748,17 @@ img {
         display: none;
     }
     .upper-container .widget_weather {
-        width: 90%; /* Adjusted width to fill the column */ /* Set height to fill parent */
+        width: 90%; /* Adjusted width to fill the column */
         border-radius: var(--border-radius-1);
         position: relative;
         margin: 0 auto;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     }
-   
-
     .analytics-navigation ul li{
         font-size: 10px;
         padding-top: 5px;
         padding-bottom: 5px;
     }
-
     .graph {
         display: none;
         grid-template-columns: 1fr;
@@ -738,16 +766,7 @@ img {
         transition: all 300ms ease;
         gap: 10px;
       }
-
-      .graph-container {
-        width: 100%;
-        height: auto;
-        margin-bottom: 10px;
-        display: inline-block;
-        border-radius: var(--border-radius-1);
-      }
-
-      .condition-graph {
+    .condition-graph {
         width: 100%;
         height: 100%; 
         display: none;
@@ -758,11 +777,9 @@ img {
         align-items: center;
         border-radius: var(--border-radius-1);
         justify-content: space-between;
-        color: var(--color-dark);
+        color: var(--color-white);
     } 
     .condition-graph.graph .card {
-        /* Your styling for the cloned cards inside .condition-graph */
-        /* Adjust as needed */
         width: 90% !important;
         height: 100% !important;
         display: flex !important;
@@ -776,5 +793,4 @@ img {
         color: var(--color-white);
         margin-top: 5px;
     }
-    /* Adjust other styles as needed for smaller screens */
 }
