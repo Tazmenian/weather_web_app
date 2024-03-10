@@ -655,6 +655,7 @@ img {
 
 @media screen and (max-width: 600px) {
     .wrapper {
+        height: auto;
         width: 100%; /* Adjust width to fill the viewport */
         min-width: 600px; /* Remove minimum width */
         padding: 10px; /* Adjust padding for smaller screens */
@@ -667,11 +668,14 @@ img {
 
     .weather_map {
         display: flex; /* Use flexbox for responsiveness */
-        flex-direction: column; /* Arrange weather map components vertically */
+        flex-direction: column;
+        height: 700px;
+        width: 100%;
+        gap: 30px; /* Arrange weather map components vertically */
     }
 
     .map_container {
-        height: 200px; /* Decrease map height for smaller screens */
+        height: auto; /* Decrease map height for smaller screens */
     }
 
     .map {
@@ -704,5 +708,56 @@ img {
         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     }
 
+    .analytics-navigation ul li{
+        font-size: 15px;
+        padding-right: 8.1px;
+        padding-left: 7px;
+    }
+
+    .graph {
+        display: none;
+        grid-template-columns: 1fr;
+        height: 100%;
+        transition: all 300ms ease;
+        gap: 10px;
+      }
+
+      .graph-container {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        display: inline-block;
+        border-radius: var(--border-radius-1);
+      }
+
+      .condition-graph {
+        width: 100%;
+        height: 100%; 
+        display: none;
+        grid-template-columns: repeat(3, 1fr);
+        background-image: url(images/weather_condition.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        align-items: center;
+        border-radius: var(--border-radius-1);
+        justify-content: space-between;
+        color: var(--color-dark);
+    } 
+    .condition-graph.graph .card {
+        /* Your styling for the cloned cards inside .condition-graph */
+        /* Adjust as needed */
+        width: 90% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        background: var(--color-dark);
+        opacity: 0.7;
+        border-radius: var(--border-radius-2);
+        justify-content: center;
+        margin: 0 auto;
+        color: var(--color-white);
+        margin-top: 5px;
+    }
     /* Adjust other styles as needed for smaller screens */
 }

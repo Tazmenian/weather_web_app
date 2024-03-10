@@ -3,155 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Dashboard using HTML/CSS/Javascript</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Material Icon CDN -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Sign-in / Sign-up Page</title>
+    <link rel="stylesheet" href="login_style.css">
 </head>
 <body>
-    <div class="container">
-        <aside>
-            <div class="top">
-                <div class="logo">
-                    <img src="./images/logo.png" alt="">
-                    <h2>DEV<span class="danger">MET</span></h2>
-                </div>
-                <div class="close" id="close-btn">
-                    <span class="material-icons-outlined">close</span>
-                </div>
-            </div>
-
-                <div class="sidebar">
-                    <a href="#" class="active">
-                        <span class="material-icons-outlined">grid_view</span>
-                        <h3>Dashboard</h3>
-                    </a>
-                    <a href="#">
-                        <span class="material-icons-outlined">group</span>
-                        <h3>Customers</h3>
-                    </a>
-                    <a href="#">
-                        <span class="material-icons-outlined">inventory</span>
-                        <h3>Orders</h3>
-                    </a>
-                    <a href="#">
-                        <span class="material-icons-outlined">inventory</span>
-                        <h3>Analytics</h3>
-                    </a>
-                    <a href="#">
-                        <span class="material-icons-outlined">forward_to_inbox</span>
-                        <h3>Messages</h3>
-                        <span class="message-count">26</span>
-                    </a>
-                    <a href="#">
-                        <span class="material-icons-outlined">category</span>
-                        <h3>Products</h3>
-                    </a>
-                    <a href="#">
-                        <span class="material-icons-outlined">summarize</span>
-                        <h3>Reports</h3>
-                    </a>
-                    <a href="#">
-                        <span class="material-icons-outlined">settings</span>
-                        <h3>Settings</h3>
-                    </a>
-                    <a href="#">
-                        <span class="material-icons-outlined">add</span>
-                        <h3>ADD Product</h3>
-                    </a>
-                    <a href="#">
-                        <span class="material-icons-outlined">logout</span>
-                        <h3>Logout</h3>
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form class="form-signup">
+                <i class="fa-regular fa-circle-user"></i>
+                <input type="text" placeholder="Name" id="name">
+                <input type="email" placeholder="Email" id="email">
+                <input type="password" placeholder="Password" id="password">
+                <span>or use your email for registration</span>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google"></i><i class="fa-brands fa-facebook"></i><i class="fa-brands fa-github"></i><i class="fa-brands fa-linkedin"></i>
                     </a>
                 </div>
-        </aside>
-        <!---------------------- END of ASIDE--------------------------->
-
-        <main>
-            <div class="top-bar">
-                <h1>Dashboard</h1>
-                <div class="right">
-                    <div class="top">
-                        <button id="menu-btn">
-                            <span class="material-icons-outlined">menu</span>
-                        </button>
-                        <div class="theme-toggler">
-                            <span class="material-icons-outlined active">light_mode</span>
-                            <span class="material-icons-outlined">dark_mode</span>
-                        </div>
-                        <div class="profile">
-                            <div class="info">
-                                <p>Hey, <b>Mark</b></p>
-                                <small class="text-muted">Admin</small>
-                            </div>
-                            <div class="profile-photo">
-                                <img src="./images/profile-1.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>   
+                <button>Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form class="form-signin">
+                <i class="fa-regular fa-circle-user"></i>
+                <input id="email2" type="email" placeholder="Email">
+                <input id="password2" type="password" placeholder="Password">
+                <span>or use your email password</span>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google"></i><i class="fa-brands fa-facebook"></i><i class="fa-brands fa-github"></i><i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
+                <a href="#">Forget your Password?</a>
+                <button id="sign_in">Sign In</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your credential to navigate the site</p>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Hi, Guest!</h1>
+                    <p>Thank you for visiting this site<br>Hope you'll enjoy</p>
+                    
+                    <button class="hidden" id="register">Sign Up</button>
                 </div>
             </div>
-            <div class="insights">
-                <div class="card">
-                    <div class="search">
-                        <input type="text" placeholder="enter city name" spellcheck="false">
-                        <button><span class="material-icons-outlined">search</span></button>
-                    </div>
-                    <div class="weather">
-                        <div class="weather-update">
-                            <img class="weather-icon" src="images/rain.png" alt="">
-                            <h1 class="temp"><span class="material-icons-outlined">more_horiz</span></h1>
-                            <h1 class="city"><span class="material-icons-outlined">more_horiz</span>Loading<span class="material-icons-outlined">more_horiz</span></h1>
-                        </div>
-                        <div class="details">
-                            <div class="col">
-                                <img src="images/humidity.png" alt="">
-                                <div>
-                                    <p class="humidity"><span class="material-icons-outlined">more_horiz</span></p>
-                                    <p>Humidity</p>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <img src="images/wind.png" alt="">
-                                <div>
-                                    <p class="wind"><span class="material-icons-outlined">more_horiz</span></p>
-                                    <p>Wind Speed</p>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <img src="images/pressure.png" alt="">
-                                <div>
-                                    <p class="pressure"><span class="material-icons-outlined">more_horiz</span></p>
-                                    <p>Pressure</p>
-                                </div>
-                            </div>
-                            <button class="reset-chart-button">Reset Data</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="weekly-graph">
-
-                    <div>
-                        <canvas id="myChart"></canvas>
-                        <div class="data-divs"></div>
-                    </div>
-
-                </div>
-            </div>
-            
-                <!------------------- End of SALES----------------->
-
-                <!------------------- End of EXPENSES----------------->
-            <!------------------- End of INSIGHTS----------------->
-
-        </main>
-        <!---------------------- END of MAIN------------------------------>
-
-        
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-    <script type="module" src="script.js"></script>
+    <script src="login_script.js"></script>
+    <script src="signin_signout.js" type="module"></script>
     
 </body>
 </html>
